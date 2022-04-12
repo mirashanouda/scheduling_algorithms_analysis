@@ -20,19 +20,9 @@ int nonPreSJF::minBurst()
 	int minPro = 0;
 
 	for (int i = 0; i < myProc.size(); ++i) {
-		//if (myProc[i].arrivalTime <= clk &&
-		//	myProc[i].cpuBurst == min &&
-		//	myProc[i].arrivalTime < myProc[minPro].arrivalTime &&
-		//	myProc[i].cpuBurst != 0) {
-		//
-		//	min = myProc[i].remainingTime;
-		//	minPro = i;
-		//}
-
 		if (myProc[i].arrivalTime <= clk && 
 			myProc[i].cpuBurst < min &&
 			myProc[i].cpuBurst != 0) {
-
 			//cout << "PID = " << myProc[i].pid << " -- burst = " << myProc[i].cpuBurst << " -- arrival = " << myProc[i].arrivalTime << endl; 
 			min = myProc[i].cpuBurst;
 			minPro = i;
@@ -115,3 +105,13 @@ void nonPreSJF::printResults()
 nonPreSJF::~nonPreSJF()
 {
 }
+
+
+//if (myProc[i].arrivalTime <= clk &&
+//	myProc[i].cpuBurst == min &&
+//	myProc[i].arrivalTime < myProc[minPro].arrivalTime &&
+//	myProc[i].cpuBurst != 0) {
+//
+//	min = myProc[i].remainingTime;
+//	minPro = i;
+//}

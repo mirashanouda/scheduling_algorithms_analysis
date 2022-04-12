@@ -18,19 +18,10 @@ int PreSJF::minRemaining()
 	int minPro = 0;
 
 	for (int i = 0; i < myProc.size(); ++i) {
-		//if (myProc[i].arrivalTime <= clk &&
-		//	myProc[i].cpuBurst == min &&
-		//	myProc[i].arrivalTime < myProc[minPro].arrivalTime &&
-		//	myProc[i].cpuBurst != 0) {
-		//
-		//	min = myProc[i].remainingTime;
-		//	minPro = i;
-		//}
 
 		if (myProc[i].arrivalTime <= clk &&
 			myProc[i].remainingTime <= min &&
 			myProc[i].remainingTime != 0) {
-
 			//cout << "PID = " << myProc[i].pid << " -- burst = " << myProc[i].cpuBurst << " -- arrival = " << myProc[i].arrivalTime << endl; 
 			min = myProc[i].remainingTime;
 			minPro = i;
@@ -128,3 +119,12 @@ void PreSJF::printResults()
 PreSJF::~PreSJF()
 {
 }
+
+//if (myProc[i].arrivalTime <= clk &&
+//	myProc[i].cpuBurst == min &&
+//	myProc[i].arrivalTime < myProc[minPro].arrivalTime &&
+//	myProc[i].cpuBurst != 0) {
+//
+//	min = myProc[i].remainingTime;
+//	minPro = i;
+//}

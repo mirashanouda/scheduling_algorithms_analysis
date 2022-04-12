@@ -57,9 +57,9 @@ int main() {
 		list.push_back({ rand() % 120, rand() % 30+1, rand() %3 });
 	}
 	
-	cout << "MLQ: \n";
-	MLQ mlq(list);
-	mlq.scheduler();
+	//cout << "MLQ: \n";
+	//MLQ mlq(list);
+	//mlq.scheduler();
 
 	cout << "nonPreemtive: \n";
 	nonPreSJF nonPresjf(list);
