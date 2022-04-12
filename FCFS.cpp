@@ -4,13 +4,11 @@ FCFS::FCFS(vector <preProc> proc)
 {
     myProc.resize(proc.size());
     for (int i = 0; i < proc.size(); ++i) {
-        //myProc[i].pid = proc[i].pid;
         myProc[i].arrivalTime = proc[i].arrivalTime;
         myProc[i].cpuBurst = proc[i].cpuBurst;
-        //myProc[i].priority = proc[i].priority;
+        myProc[i].priority = proc[i].priority;
         myProc[i].remainingTime = myProc[i].cpuBurst;
     }
-    //myProc = proc; 
 	clk = 0; 
 }
 
@@ -100,12 +98,11 @@ void FCFS::printProc()
 
 void FCFS::printResults()
 {
-    printf("PID | Completion | Waiting | TurnAround\n");
-    //cout << setw(10)  << "PID" << setw(10) << "Completion" << setw(10) << "Waiting" << endl;
-    for (int i = 0; i < myProc.size(); ++i) {
-    	printf(" %d  |     %d	 |   %d    |     %d     \n", i+1, myProc[i].completionTime, myProc[i].waitingTime, myProc[i].turnAroundTime);
-    }
-    cout << endl;
+    //printf("PID | Completion | Waiting | TurnAround\n");
+    ////cout << setw(10)  << "PID" << setw(10) << "Completion" << setw(10) << "Waiting" << endl;
+    //for (int i = 0; i < myProc.size(); ++i) {
+    //	printf(" %d  |     %d	 |   %d    |     %d     \n", i+1, myProc[i].completionTime, myProc[i].waitingTime, myProc[i].turnAroundTime);
+    //}
     cout << "Avarage Waiting	   = " << getAvgWait() << endl;
     cout << "Avarage TunringAround = " << getAvgTurnAround() << endl;
     cout << "Avarage Response	   = " << getAvgResponse() << endl << endl;

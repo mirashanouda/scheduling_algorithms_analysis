@@ -17,7 +17,6 @@ struct preProc
 struct process
 {
     //given
-    //int pid;
     int arrivalTime;    // when process arrives at the queue
     int cpuBurst;             //cpu cyles
     int priority;

@@ -6,13 +6,11 @@ nonPreSJF::nonPreSJF(vector<preProc> proc)
 	//don't consider it 
 	myProc.resize(proc.size());
 	for (int i = 0;  i < proc.size(); ++i) {
-		//myProc[i].pid = proc[i].pid;
 		myProc[i].arrivalTime = proc[i].arrivalTime;
 		myProc[i].cpuBurst = proc[i].cpuBurst;
-		//myProc[i].priority = proc[i].priority;
+		myProc[i].priority = proc[i].priority;
 		myProc[i].remainingTime = myProc[i].cpuBurst;
 	}
-	//myProc = proc;
 	clk = 0; 
 }
 
@@ -24,6 +22,7 @@ int nonPreSJF::minBurst()
 	for (int i = 0; i < myProc.size(); ++i) {
 		//if (myProc[i].arrivalTime <= clk &&
 		//	myProc[i].cpuBurst == min &&
+		//	myProc[i].arrivalTime < myProc[minPro].arrivalTime &&
 		//	myProc[i].cpuBurst != 0) {
 		//
 		//	min = myProc[i].remainingTime;
@@ -31,7 +30,7 @@ int nonPreSJF::minBurst()
 		//}
 
 		if (myProc[i].arrivalTime <= clk && 
-			myProc[i].cpuBurst <= min &&
+			myProc[i].cpuBurst < min &&
 			myProc[i].cpuBurst != 0) {
 
 			//cout << "PID = " << myProc[i].pid << " -- burst = " << myProc[i].cpuBurst << " -- arrival = " << myProc[i].arrivalTime << endl; 
@@ -108,9 +107,8 @@ void nonPreSJF::printResults()
 	//for (int i = 0; i < myProc.size(); ++i) {
 	//	//printf(" %d  |     %d	 |   %d    |     %d     \n", i, myProc[i].completionTime, myProc[i].waitingTime, myProc[i].turnAroundTime);
 	//}
-
 	cout << "Avarage Waiting	   = " << getAvgWait() << endl;
-	cout << "Avarage TunringAround = " << getAvgTurnAround() << endl << endl;
+	cout << "Avarage TunringAround = " << getAvgTurnAround() << endl;
 	cout << "Avarage Response	   = " << getAvgResponse() << endl << endl;
 }
 

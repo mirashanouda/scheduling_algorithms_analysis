@@ -4,13 +4,11 @@ PreSJF::PreSJF(vector<preProc> proc)
 {
 	myProc.resize(proc.size());
 	for (int i = 0; i < proc.size(); ++i) {
-		//myProc[i].pid = proc[i].pid;
 		myProc[i].arrivalTime = proc[i].arrivalTime;
 		myProc[i].cpuBurst = proc[i].cpuBurst;
-		//myProc[i].priority = proc[i].priority;
+		myProc[i].priority = proc[i].priority;
 		myProc[i].remainingTime = myProc[i].cpuBurst;
 	}
-	//myProc = proc;
 	clk = 0;
 }
 
@@ -21,8 +19,9 @@ int PreSJF::minRemaining()
 
 	for (int i = 0; i < myProc.size(); ++i) {
 		//if (myProc[i].arrivalTime <= clk &&
-		//	myProc[i].remainingTime == min &&
-		//	myProc[i].remainingTime != 0) {
+		//	myProc[i].cpuBurst == min &&
+		//	myProc[i].arrivalTime < myProc[minPro].arrivalTime &&
+		//	myProc[i].cpuBurst != 0) {
 		//
 		//	min = myProc[i].remainingTime;
 		//	minPro = i;
@@ -49,9 +48,6 @@ void PreSJF::scheduler() {
 	while (burst0 < myProc.size()) { //while there are unfinished proc -- burst != 0
 		execProc = minRemaining();
 		//cout << "P" << myProc[execProc].pid << " is picked\n";
-
-		
-		
 		
 		//Process not yet started 
 		if (myProc[execProc].cpuBurst == myProc[execProc].remainingTime) {
@@ -66,12 +62,13 @@ void PreSJF::scheduler() {
 			myProc[execProc].completionTime = clk + 1;  //the finishing time
 			myProc[execProc].turnAroundTime = myProc[execProc].completionTime - myProc[execProc].arrivalTime;
 			myProc[execProc].waitingTime = myProc[execProc].turnAroundTime - myProc[execProc].cpuBurst;
+			myProc[execProc].responseTime = myProc[execProc].startTime - myProc[execProc].arrivalTime;
 			burst0++;
 			//cout << "P" << execProc << " -- arrived: " << myProc[execProc].arrivalTime  << " -- start: " << myProc[execProc].startTime << " -- finish: " << myProc[execProc].completionTime << endl;
 		}
 		clk++;
 	}
-	//printResults();
+	printResults();
 }
 
 double PreSJF::getAvgWait() {
@@ -124,7 +121,6 @@ void PreSJF::printResults()
 	//for (int i = 0; i < myProc.size(); ++i) {
 	//	printf(" %d  |     %d	 |   %d    |     %d     \n", i + 1, myProc[i].completionTime, myProc[i].waitingTime, myProc[i].turnAroundTime);
 	//}
-	cout << endl;
 	cout << "Avarage Waiting	   = " << getAvgWait() << endl;
 	cout << "Avarage TunringAround = " << getAvgTurnAround() << endl;
 	cout << "Avarage Response	   = " << getAvgResponse() << endl << endl;
